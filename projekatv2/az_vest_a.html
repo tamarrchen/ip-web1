@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Vest</title>
+        <link rel="stylesheet" type="text/css" href="projekat.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <div  class="sve">
+            <?php include("zaglavlje_admin.php") ?>
+        <form>
+        <table  class="sve nav">
+            <th>
+                AŽURIRAJTE VESTI
+             </th>
+             <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+             <tr>
+                 <td>Izaberite vest koju želite da ažurirate ili obrišete</td>
+             </tr>
+             <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+             <tr><?php 
+
+                include("config.php");
+                     $upit = $conn->query("SELECT * FROM vesti");
+                     while($niz[] = $upit->fetch_object());
+                     array_pop($niz);
+                 ?>
+                <td class="dropdown">
+                    <button class="dropbtn">Izaberite</button>
+                    <?php foreach ($niz as $option ) : ?>
+                    <div class="dropdown-content">
+                        
+                      <a href="<?php echo $option->LinkVesti; ?>"> <?php echo $option->Naslov; ?></a>
+                      <?php endforeach;?>
+                    </div>
+                </td>
+             </tr>
+        
+        </table>
+        </form>
+        </div>
+    </body>
+</html>

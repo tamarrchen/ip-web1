@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <title>Pacijent</title>
+        <link rel="stylesheet" type="text/css" href="projekat.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    </head>
+    <body>
+        <div  class="sve">
+            <?php include("zaglavlje_admin.php"); 
+            require_once("config.php");?>
+        <form action="insert_db_pacijenti.php" method="POST">
+        <table  class="nav sve">
+            <th colspan="2">
+               UNESITE PACIJENTA
+            </th>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Ime
+                </td>
+                <td>
+                    <input type="text"  name="imep" required /> <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Prezime
+                </td>
+                <td>
+                    <input type="text" name="prezimep" required /> <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Lični broj
+                </td>
+                <td>
+                    <input type="text" name="licnibrojp" required /> <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Telefon
+                </td>
+                <td>
+                    <input type="tel" name="telefonp" required /> <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    E-mail
+                </td>
+                <td>
+                    <input type="email" name="emailp" required /> <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password
+                </td>
+                <td>
+                    <input type="password" name="pswp" required /> <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Karton
+                </td>
+                <td>
+                    <input type="text" name="kartonp" required /> <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Lekar
+                </td>
+                <td>
+                    <?php 
+                            $upit = $conn->query("SELECT * FROM medicinari");
+                            while($niz[] = $upit->fetch_object());
+                            array_pop($niz);
+                        ?>
+                    <select name="lekar" size=4>
+                        <?php foreach ($niz as $option ) : ?>
+                            <option value="<?php echo $option->IDMedicinara; ?>"> <?php echo $option->Ime . " ". $option->Prezime;
+                                 $ime=$option->Ime; ?>
+                            </option>
+                        <?php endforeach;?>
+                   </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    <input class="dugme" type="submit" name='unos1' value="Unesi"/>
+                    <input class="dugme" type="reset" value="Poništi"/>
+                </td>
+            </tr>
+        </table>
+        </form>
+        </div>
+    </body>
+</html>

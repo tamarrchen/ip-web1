@@ -1,0 +1,113 @@
+<html>
+<head>
+    <title>Licni podaci</title>
+    <link rel="stylesheet" type="text/css" href="projekat.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+
+</head>
+<body>
+        <div class="sve">
+        <?php include("zaglavlje_med.php"); ?>
+            <form action="az_lp_mm.php" method="POST">
+                <table  class="sve nav">
+                    <th colspan="2">
+                        AŽURIRAJTE LIČNE PODATKE
+                     </th>
+                     <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                     <tr>
+                        <?php 
+
+                        include("config.php");
+                        $id=$_SESSION['idosobe'];
+                         $upit = $conn->query("SELECT * FROM medicinari WHERE IDMedicinara=$id");
+                         while($niz[] = $upit->fetch_object());
+                         array_pop($niz);
+                         foreach($niz as $option){
+                             $ime=$option->Ime;
+                             $prezime=$option->Prezime;
+                             $lb=$option->LicniBroj;
+                             $tel=$option->Telefon;
+                             $mail=$option->Email;
+                             $psw=$option->Sifra;
+                             
+
+
+
+                         }
+                     ?>
+                         <td>
+                             Ime
+                         </td>
+                         <td>
+                             <input type="text" name="imep" value="<?php echo $ime; ?>" required size="35%"/> <br/>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>
+                             Prezime
+                         </td>
+                         <td>
+                             <input type="text" name="prezimep" value="<?php echo $prezime; ?>" required size="35%"/> <br/>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>
+                             Lični broj
+                         </td>
+                         <td>
+                             <input type="text" name="licnibrojp" value="<?php echo $lb; ?>" required size="35%"/> <br/>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>
+                             Telefon
+                         </td>
+                         <td>
+                             <input type="text" name="telefonp" value="<?php echo $tel; ?>" required size="35%"/> <br/>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>
+                             E-mail
+                         </td>
+                         <td>
+                             <input type="text" name="emailp" value="<?php echo $mail; ?>" required size="35%"/> <br/>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>
+                             Password
+                         </td>
+                         <td>
+                             <input type="password" name="pswp" value="<?php echo $psw; ?>" required size="35%"/> <br/>
+                         </td>
+                     </tr>
+                     <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                     <tr>
+                         <td>
+                             &nbsp;
+                         </td>
+                         <td>
+                             <input class="dugme" type="submit" name="az" value="Ažuriraj"/>
+                             <input class="dugme" type="reset" value="Obriši"/>
+                         </td>
+                     </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

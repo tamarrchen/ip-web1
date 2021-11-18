@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>Vest</title>
+        <link rel="stylesheet" type="text/css" href="projekat.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    </head>
+    <body>
+        <div  class="sve">
+            <?php include("zaglavlje_admin.php") ?>
+        <form action="insert_db_vesti.php" method="POST">
+        <table  class="sve nav">
+            <th colspan="2">UNESITE VEST</th>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite naslov vesti</td>
+                <td><input type="text" name="naslov"/></td>
+            </tr>
+            <tr>
+                <td>Unesite datum</td>
+                <td><input type="date" name="datum"/></td>
+            </tr>
+            <tr>
+                <td>Unesite sadržaj vesti</td>
+                <td><textarea name="tekst" rows="10%"></textarea> </td>
+            </tr>
+            <tr>
+                <td>Dodajte sliku</td>
+                <td><input type="file" name="slika" /></td>
+            </tr>
+            <tr>
+                <td>Dodajte prilog</td>
+                <td><input type="file" name="prilog" multiple/></td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    <input class="dugme" type="submit" value="Unesi"/>
+                    <input class="dugme" type="reset" value="Poništi"/>
+                </td>
+            </tr>       
+        </table>
+        </form>
+        </div>
+    </body>
+</html>

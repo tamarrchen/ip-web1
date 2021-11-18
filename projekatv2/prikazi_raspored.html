@@ -1,0 +1,183 @@
+<html>
+    <head>
+        <title>Raspored</title>
+        <link rel="stylesheet" type="text/css" href="projekat.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+
+    </head>
+    <body>
+        <div  class="sve">
+            <?php include("zaglavlje_admin.php") ?>
+            <form action="" method="POST">
+                <table  class="sve nav">
+                    <th colspan="2">
+                        RASPORED
+                    </th>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Izaberite datum 
+                        </td>
+                        <td>
+                            <input type="date" name="dan" required/> <br/>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            Izaberite vreme od
+                        </td>
+                        <td>
+                            <input type="time" name="vreme1" required/> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Izaberite vreme do
+                        </td>
+                        <td>
+                            <input type="time" name="vreme2" required/> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>  
+                          
+                        <td>
+                        <label for="ord">Izaberite ordinaciju</label>
+                        </td>
+                        <td>
+                        <select id="ord" name="ord">
+                          <option value="ord0">Nije izabrano</option>
+                          <option value="ord1">Ordinacija 1</option>
+                          <option value="ord2">Ordinacija 2</option>
+                          <option value="ord3">Ordinacija 3</option>
+                          <option value="ord4">Ordinacija 4</option>
+                        </select>
+                        </td>
+                       <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        
+                        <td colspan="2">
+                            <input class="dugme" type="submit" name="prikazi" value="Prikaži"/>
+                        </td>
+                    </tr></table>
+                    
+                    <?php 
+
+                    include("config.php");
+
+                    if(isset($_POST['prikazi'])){
+                        ?>
+                        <div class="grid-container">
+                            <div class="grid-item hh">Lekar</div>
+                            
+                            <div class="grid-item hh">Pacijenti</div> 
+                            <div class="grid-item hh">Datum i vreme</div> 
+                           
+                            <?php
+                    $dan=$_POST['dan'];
+                    $od=$_POST['vreme1'];
+                    $do=$_POST['vreme2'];
+
+                    $sql=$conn->query("SELECT * FROM zakazi");
+
+
+                    while($niz[]=$sql->fetch_object());
+                        array_pop($niz);
+                        foreach($niz as $option) {
+                            $daye= $option->DatumZakazivanja;
+                            $idmed=$option->IDMedicinara;
+                            $idpac=$option->IDPacijenta;
+
+                            $med=$conn->query("SELECT Ime,Prezime FROM medicinari WHERE IDMedicinara='$idmed';");
+                            while($niz1[]=$med->fetch_object());
+                                array_pop($niz1);
+                                foreach($niz1 as $option1) {
+                                    $mime=$option1->Ime;
+                                    $mprezime=$option1->Prezime;
+                                    $m= $mime . " " . $mprezime;
+                                }
+
+
+
+
+                            $pac=$conn->query("SELECT Ime,Prezime FROM pacijenti WHERE IDPacijenta='$idpac';");
+                            while($niz2[]=$pac->fetch_object());
+                                array_pop($niz2);
+                                foreach($niz2 as $option2) {
+                                    $pime=$option2->Ime;
+                                    $pprezime=$option2->Prezime;
+                                    $p= $pime . " " . $pprezime;
+                                }
+
+
+
+
+                            $raz= preg_split("/ /", $option->DatumZakazivanja);
+                            $raz_vreme=$raz[1];
+                            //echo $raz_vreme;
+                            $raz1=preg_split("/-/",$raz_vreme);
+                            $raz_poc_vr=strtotime($raz1[0]);
+                            $raz_kraj_vr=strtotime($raz1[1]);
+                           // echo "  SVI TERMINI  " . $dan . "   datum   " . $raz[0] . " pocetak " . $raz1[0]. "  kraj " . $raz1[1] . " \n " ;
+                            if($dan==$raz[0]) {
+                                if($raz1[0]>=$od && $raz1[0]<=$do){
+                                //echo " termin upada u opseg " . $m. "      "  . $p . "   datum   " . $raz[0] . " pocetak " . $raz1[0]. "  kraj " . $raz1[1] . PHP_EOL . " ";
+                            ?>
+                            
+                            
+                            
+                                <div class="grid-item"> <?php echo $m;?></div>
+                                
+                                <div class="grid-item">
+                                    <div class="grid-item"><?php echo $p;?></div>
+                                </div> 
+                                
+                                <div class="grid-item">
+                                    <div class="grid-item"><?php echo $daye;?></div>
+                                    
+                                </div> 
+                                
+                                
+                            
+                            
+<?php                            } }
+                        }
+
+
+
+}    
+
+
+?>
+</div>
+            </form>
+            
+        </div>
+    </body>
+</html>

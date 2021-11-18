@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>Kalendar</title>
+        <link rel="stylesheet" type="text/css" href="projekat.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div  class="sve">
+            <?php include("zaglavlje_admin.php") ?>
+            <script>
+                function myFunction() 
+                {
+                var gr = document.getElementById("broj").value;
+                for(i=1; i<=gr; i++)
+                    {
+                    var x = document.createElement("INPUT");
+                    x.setAttribute("type", "date");
+                    document.body.appendChild(x);
+                    }
+                }
+                
+            </script>
+           
+            <form action="" method="POST">
+                <table  class="nav">
+                    <th colspan="2">
+                       AŽURIRAJTE RADNE DANE (radni dani koji prelaze u neradne)
+                    </th>
+                    <tr>
+                        <td>
+                            <input type="text" id="broj" name="broj"> <br/>
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="dugme" value="dgm" onclick="myFunction()">Prikazi</button>
+                        </td>
+
+                        <td>
+                            
+                            <input class="dugme" type="submit" value="Ažuriraj"/>
+                            <input class="dugme" type="reset" value="Obriši"/>
+                            
+                             
+                        </td>
+                    </tr>
+                </table>
+                
+            </form>
+            
+                
+                            
+        </div>
+    </body>
+</html>

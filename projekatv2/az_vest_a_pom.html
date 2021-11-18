@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Vest</title>
+        <link rel="stylesheet" type="text/css" href="projekat.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <div  class="sve">
+            <?php include("zaglavlje_admin.php") ?>
+        <form>
+        <table  class="sve nav">
+            <th colspan="2">AŽURIRAJTE VEST</th>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>Ažurirajte naslov vesti</td>
+                <td><input type="text" value="Korona virus, budžet i finansije u Srbiji: Kako se prijaviti za 60 evra" name="naslov_vesti" size="35%"/></td>
+            </tr>
+            <tr>
+                <td>Ažurirajte datum</td>
+                <td><input type="date" value="2021-04-15" name="datum_vesti"/></td>
+            </tr>
+            <tr>
+                <td>Ažurirajte sadržaj vesti</td>
+                <td><textarea name="tekst_vesti"  rows="10%">Godinu dana posle isplate 100 evra iz državnog budžeta, počela je prijava za dodatnih 60 evra za sve punoletne ljude u Srbiji – u dve jednake rate u maju i novembru. Procedura je jednostavna i kratko traje, a popunjava se preko sajta Uprave za trezor. Potrebno je uneti tri podatka – broj lične karte, jedinstveni matični broj građana i banku u kojoj imate račun ili gde želite da vam država otvori račun, ako ga nemate.Prijava traje do 15. maja, a za one koji ne barataju internetom, od 5. maja postojaće i kol centar kako bi ljudi mogli telefonom da se prijave, najavili su zvaničnici.</textarea> </td>
+            </tr>
+            <tr>
+                <td>Dodajte sliku</td>
+                <td><input type="file" value="photos/sl.jpg" name="slika" /></td>
+            </tr>
+            <tr>
+                <td>Dodajte prilog</td>
+                <td><input type="file" name="prilog" multiple/></td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    <input class="dugme" type="submit" value="Ažuriraj"/>
+                    <input class="dugme" type="reset" value="Obriši"/>
+                </td>
+            </tr>       
+        </table>
+        </form>
+        </div>
+    </body>
+</html>

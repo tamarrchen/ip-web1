@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Termin pregleda</title>
+        <link rel="stylesheet" type="text/css" href="projekat.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+
+    </head>
+    <body>
+        <div class="sve">
+            <?php include("zaglavlje_pacijent.php"); ?>
+
+        <form>
+            <table  class="sve nav">
+                <th colspan="2">
+                    TERMIN PREGLEDA
+                </th>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <?php 
+
+                                include("config.php");
+                                $id=$_SESSION['idosobe'];
+                                $datt="01:01:1970"; $vrmm=" ";
+                                 $upit = $conn->query("SELECT * FROM zakazi WHERE IDpacijenta=$id");
+                                 while($niz[] = $upit->fetch_object());
+                                 array_pop($niz);
+                                 if($upit){
+                                 foreach($niz as $option){
+                                     $polje=preg_split("/ /",$option->DatumZakazivanja);
+                                     
+                                     $datt = isset($polje[0]) ? $polje[0] : "01:01:1970";
+                                     $vrmm = isset($polje[1]) ? $polje[1] : " ";
+                                 }}
+                             ?>
+                    <td>
+                        Datum zakazanog pregleda 
+                    </td>
+                    <td>
+                        <input type="date" name="dan" value="<?php echo $datt;?>"/> <br/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Vreme zakazanog pregleda
+                    </td>
+                    <td>
+                        <input type="string" name="vreme" value="<?php echo $vrmm;?>"/> <br/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </body>
+</html>

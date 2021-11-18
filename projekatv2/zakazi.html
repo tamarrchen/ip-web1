@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <title>Zakazivanje</title>
+        <link rel="stylesheet" type="text/css" href="projekat.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+
+    </head>
+    <body>
+        <div class="sve">
+            <?php include("zaglavlje_pacijent.php"); 
+            require_once("config.php");?>
+        <form action="insert_db_zakazi.php" method="POST">
+        <table  class="sve nav">
+            <th colspan="2">
+                UNESITE SLEDECE PODATKE
+            </th>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Lekar
+                </td>
+                <td>
+                    <?php 
+                            $upit = $conn->query("SELECT * FROM medicinari");
+                            while($niz[] = $upit->fetch_object());
+                            array_pop($niz);
+                        ?>
+                    <select name="lekar" size=4 id="lekar1" value="">
+                        <?php foreach ($niz as $option ) : ?>
+                            <option value="<?php echo $option->IDMedicinara; ?>" onclick="optionSelected();"> <?php echo $option->Ime . " ". $option->Prezime;
+                                 $ime=$option->Ime; ?>
+                            </option>
+                        <?php endforeach;?>
+                   </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Simptomi
+                </td>
+                <td>
+                    <textarea name="simptomi" rows="10%"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    T[°C]
+                </td>
+                <td>
+                    <input type="text" name="temp"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Broj dana sa temperaturom
+                </td>
+                <td>
+                    <input type="text" name="brdana" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Da li imate simptome korone?
+                </td>
+                <td>
+                    <input type="radio" id="k" name="korona" value="da" onclick= "radioButtonDaOnClick();">
+                    <label for="k"> DA</label>
+                    <input type="radio" id="nk" name="korona" value="ne">
+                    <label for="nk"> NE</label><br>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    <input class="dugme" type="submit" value="Unesi"/>
+                    <input class="dugme" type="reset" value="Poništi"/>
+                </td>
+            </tr>
+        </table>
+        </form>
+        </div>
+		<script>
+			function radioButtonDaOnClick(){
+				let select = document.getElementById('lekar1');
+				select.value=""
+				//console.log(select)
+			}
+			function optionSelected(){
+				console.log();
+				document.getElementById("nk").checked=true
+				
+			}
+		</script>
+    </body>
+</html>

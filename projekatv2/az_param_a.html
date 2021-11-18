@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Parametri</title>
+        <link rel="stylesheet" type="text/css" href="projekat.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <div  class="sve">
+            <?php include("zaglavlje_admin.php") ?>
+        <form action="insert_param.php" method="POST">
+        <table  class="sve nav">
+            <th colspan="2">AŽURIRAJTE PODRAZUMEVANI BROJ PACIJENATA NA SAT</th>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Broj pacijenata 
+                </td>
+                <td>
+                    <input type="text" name="brpac" value="<?php $f=fopen('param.txt','r'); $x=fgets($f,filesize('param.txt')); echo 60 / (float)$x; fclose($f);    ?>" /> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    <input class="dugme" type="submit" name="azur" value="Ažuriraj"/>
+                    <input class="dugme" type="reset" value="Ponisti"/>
+                </td>
+            </tr>
+        </table>
+        </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <title>Kalendar</title>
+        <link rel="stylesheet" type="text/css" href="projekat.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div  class="sve">
+            <?php include("zaglavlje_admin.php") ?>
+            <form action="az_nrd.php" method="POST">
+                <table  class="sve nav">
+                    <th colspan="2">
+                       AŽURIRAJTE RADNO VREME 
+                    </th>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Datum od:
+                        </td>
+                        <td>
+                            <input type="date" name="radnidan1" required/> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Datum do:
+                        </td>
+                        <td>
+                            <input type="date" name="radnidan2" required/> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Vreme od:
+                        </td>
+                        <td>
+                            <input type="time" name="vremeod" required/> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Vreme do:
+                        </td>
+                        <td>
+                            <input type="time" name="vremedo"required/> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Prva pauza od:
+                        </td>
+                        <td>
+                            <input type="time" name="pauza1od"/> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Prva pauza do:
+                        </td>
+                        <td>
+                            <input type="time" name="pauza1do"/> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Druga pauza od:
+                        </td>
+                        <td>
+                            <input type="time" name="pauza2od"/> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Druga pauza do:
+                        </td>
+                        <td>
+                            <input type="time" name="pauza2do"/> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td colspan="3">
+                            <input class="dugme" type="submit" value="Ažuriraj"/>
+                            <input class="dugme" type="reset" value="Obriši"/>
+                        </td>
+                    </tr>
+                </table>
+                </form>
+             </div>
+    </body>
+</html>

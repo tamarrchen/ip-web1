@@ -1,0 +1,140 @@
+<html>
+    <head>
+        <title>Medicinski radnik</title>
+        <link rel="stylesheet" type="text/css" href="projekat.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <div  class="sve">
+            <?php include("zaglavlje_admin.php");
+            include ("config.php");
+            ?>
+            <form action="azuriranje_med.php" method="POST">
+                <table  class="nav sve">
+                    <th colspan="2">
+                       AZURIRAJTE MEDICINSKOG RADNIKA
+                    </th>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Ime
+                        </td>
+                        <td>
+                            <input type="text" name="imem" value="<?php echo $_SESSION['ime']; ?>" /> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Prezime
+                        </td>
+                        <td>
+                            <input type="text" name="prezimem" value="<?php echo $_SESSION['prezime']; ?>" required/> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Lični broj
+                        </td>
+                        <td>
+                            <input type="text" name="licnibrojm" value="<?php echo $_SESSION['lb']; ?>" required /> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Telefon
+                        </td>
+                        <td>
+                            <input type="text" name="telefonm" value="<?php echo $_SESSION['tel']; ?>" required /> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            E-mail
+                        </td>
+                        <td>
+                            <input type="email" name="emailm" value="<?php echo $_SESSION['mail']; ?>" required /> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Password
+                        </td>
+                        <td>
+                            <input type="password" name="pswm" value="<?php echo $_SESSION['psw']; ?>" required /> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Datum od
+                        </td>
+                        <td>
+                            <input type="date" name="datumod"  value="<?php echo $_SESSION['dod']; ?>" required/> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Datum do
+                        </td>
+                        <td>
+                            <input type="date" name="datumdo" value="<?php echo $_SESSION['ddo']; ?>" required/> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Radno vreme od
+                        </td>
+                        <td>
+                            <input type="time" name="radnovremeod" value="<?php echo $_SESSION['rvod']; ?>" required /> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Radno vreme do
+                        </td>
+                        <td>
+                            <input type="time" name="radnovremedo"  value="<?php echo $_SESSION['rvdo']; ?>" required /> <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Broj pacijenata na sat
+                        </td>
+                        <td>
+                            <input type="text" name="pacijentim" value="<?php echo $_SESSION['bp']; ?>" required  /> <br/>
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td>
+                            Radi u kovid centru:
+                        </td>
+                        <td>
+                            <input type="radio" id="k" name="kovcentar" value="da" <?php if($_SESSION['cv']=="da"){ echo "checked";}?> >
+                            <label for="kk"> DA</label>
+                            <input type="radio" id="nk" name="kovcentar" value="ne" <?php if($_SESSION['cv']=="ne"){ echo "checked";}?> >
+                            <label for="nkk"> NE</label><br>
+                        </td>
+                    </tr>         
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            <input class="dugme" type="submit" name="az" value="Ažuriraj"/>
+                            <input class="dugme" type="reset" value="Obriši izmene"/>
+                        </td>
+                    </tr>
+                </table>
+                </form>
+        </div>
+    </body>
+</html>

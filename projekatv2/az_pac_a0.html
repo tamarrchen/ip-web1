@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <title>Pacijent</title>
+        <link rel="stylesheet" type="text/css" href="projekat.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+
+    </head>
+    <body>
+        <div  class="sve">
+            <?php include("zaglavlje_admin.php"); ?>
+            <form action="az_pacc.php" method="POST">
+                <table  class="sve nav az">
+                    <th colspan="5">
+                        AŽURIRAJTE PACIJENTA
+                     </th>
+                     <tr>
+                        <?php 
+        
+                        include("config.php");
+                        $id=$_SESSION['idp'];
+                        $datt="01:01:1970";
+                        $vrmm=" ";
+                         $upit = $conn->query("SELECT * FROM zakazi WHERE IDpacijenta=$id");
+                         while($niz[] = $upit->fetch_object());
+                         array_pop($niz);
+                         foreach($niz as $option){
+                             $polje=preg_split("/ /",$option->DatumZakazivanja);
+                             $datt=$polje[0];
+                             $vrmm=$polje[1];
+
+                             
+                         }
+                         $upit1 = $conn->query("SELECT * FROM pacijenti WHERE IDpacijenta=$id");
+                         while($niz1[] = $upit1->fetch_object());
+                         array_pop($niz1);
+                         foreach($niz1 as $option){
+                         $ime=$option->Ime;
+                         $prezime=$option->Prezime;
+                        
+                        
+                        }
+                     ?>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>
+                          Ime pacijenta
+                        </td>
+                        <td>
+                            <input class="text" name="im" size="15%" value="<?php echo $ime;?>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                          Prezime pacijenta
+                        </td>
+                        <td>
+                            <input class="text" size="15%" name="pr" value="<?php echo $prezime;?>">
+                        </td>
+                     </tr>
+                 <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        Došao na pregled
+                     </td>
+                     <td>
+                        <input id='da' type='radio' name='dolazak' value='dosao'/>
+                        <label for='da'>Da</label>
+                        <input id='ne' type='radio' name='dolazak' value='nije_dosao'/>
+                        <label for='ne'>Ne</label>
+                     </td>
+                 </tr>
+                 <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                 <tr>
+                     <td>
+                        Termin pregleda
+                      </td>
+                      <td>
+                        <input type='date' name='zakazano_dan' value="<?php echo $datt;?>"/>
+                     </td>
+                   </tr>
+                   <tr>
+                    <td>
+                       Vreme pregleda
+                     </td>
+                    <td>
+                       <input type='text' name='zakazano_vreme' value="<?php echo $vrmm;?>"/>
+                    </td>
+                  </tr>
+                   <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <?php 
+                $id=$_SESSION['idp'];
+                 $upit = "SELECT * FROM pacijenti WHERE IDpacijenta=$id";
+                 $rez=$conn->query($upit);
+                 while($red = $rez->fetch_assoc())
+                     $br=$red['BrojNedolazaka'];
+             ?>
+                <tr>
+                    <td>
+                        Broj nedolazaka
+                    </td>
+                    <td>
+                        <input type="number" size="15%" name='ned' value="<?php echo $br; ?>">
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input class="dugme" type="submit" name="az1" value="Ažuriraj"/>
+                        <input class="dugme" type="reset" value="Resetuj izmene"/>
+                    </td>
+                </tr>
+                 </table>
+             </form>
+        </div>
+    </body>
+</html>

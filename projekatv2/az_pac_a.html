@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>Pacijent</title>
+        <link rel="stylesheet" type="text/css" href="projekat.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+
+    </head>
+    <body>
+        <div  class="sve">
+            <?php include("zaglavlje_admin.php") ?>
+            <form action="az_pacc.php" method="POST">
+                 <table  class="nav sve">
+                    <th>
+                        AŽURIRAJTE PACIJENTE
+                    </th>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Izaberite pacijente čije podatke želite da obrišete ili da ažurirate</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        
+                        <td><?php 
+
+                            include("config.php");
+                                 $upit = $conn->query("SELECT * FROM pacijenti");
+                                 while($niz[] = $upit->fetch_object());
+                                 array_pop($niz);
+                             ?>
+                         <select name="pac" size=5>
+                             <?php foreach ($niz as $option ) : ?>
+                                 <option value="<?php echo $option->IDpacijenta; ?>"> <?php echo $option->Ime . " ". $option->Prezime;
+                                      $ime=$option->Ime; ?>
+                                 </option>
+                             <?php endforeach;?>
+                        </td>
+                    </tr>
+                    <tr>
+                        
+                        <td>
+                            <input class="dugme" type="submit" name="az" value="Ažuriraj"/>
+                            <input class="dugme" type="submit" name="br" value="Obriši"/>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>    
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

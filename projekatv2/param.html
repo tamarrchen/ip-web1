@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Parametar</title>
+        <link rel="stylesheet" type="text/css" href="projekat.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    </head>
+    <body>
+        <div  class="sve">
+            <?php include("zaglavlje_admin.php") ?>
+        <form action="insert_param.php" method="POST">
+        <table  class="sve nav">
+            <th colspan="3">UNESITE PODRAZUMEVANI BROJ PACIJENATA NA SAT</th>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Broj pacijenata
+                </td>
+
+                <td>
+                    <input type="text" name="brpac" required/> 
+                </td>
+            </tr> 
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td colspan="2">
+                    <input class="dugme" type="submit" name='unos' value="Unesi"/>
+                    <input class="dugme" type="reset" value="Poništi"/>
+                </td>
+            </tr>
+        </table>
+        </form>
+        </div>
+    </body>
+</html>
